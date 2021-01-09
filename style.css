@@ -1,3 +1,27 @@
 body{
     background-color: grey;
 }
+
+h1{
+    text-align: center;
+}
+
+.gameboard{
+    border:solid orange;
+    height: 300px;
+    width: 300px;
+    margin:auto;
+    display: grid;
+    grid-template-rows: 150px 150px;
+    grid-template-columns: 150px 150px; 
+
+}
+
+
+.button{
+    border:solid green;
+    margin:10px;
+    text-align: center;
+ 
+
+}
