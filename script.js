@@ -127,8 +127,11 @@ console.log(automatedArray)
 
 function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
-        const sequenceSpeed=setTimeout(function(){
+        setTimeout(function(){console.log("delay test iternation "+i)
+        
         console.log(arrSequence);
+        
+
         if(arrSequence[i].toString()=="red"){
             gameButtons[0].style.backgroundColor="red";
             const timer2=setTimeout(function(){
@@ -136,32 +139,32 @@ function showSequence(arrSequence){
                     console.log("timer2 ")},300);
         }
 
-        if(arrSequence[i].toString()=="blue"){
+        else if(arrSequence[i].toString()=="blue"){
             gameButtons[1].style.backgroundColor="blue";
             const timer2=setTimeout(function(){
                 gameButtons[1].style.backgroundColor="black";    
                     console.log("timer2 ")},300);
         }   
 
-        if(arrSequence[i].toString()=="green"){
+        else if(arrSequence[i].toString()=="green"){
             gameButtons[2].style.backgroundColor="green";
             const timer2=setTimeout(function(){
                 gameButtons[2].style.backgroundColor="black";    
                     console.log("timer2 ")},300);
         }
 
-        if(arrSequence[i].toString()=="yellow"){
+        else if(arrSequence[i].toString()=="yellow"){
             gameButtons[3].style.backgroundColor="yellow";
             const timer2=setTimeout(function(){
                 gameButtons[3].style.backgroundColor="black";    
                     console.log("timer2 ")},300);
         }  
-    //should control time between displaying sequence flash     
-    },1000);
-}
+        
+    //CONTROLS TIMING OF AUTOMATED SEQUENCE TRANSITION       
+    },750*i);
 
 }
-
+}
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
         showSequence(testingArray);     
