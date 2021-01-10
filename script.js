@@ -3,13 +3,15 @@ console.log("javaScript Link Works!");
 //Need to declare two players
 let playerOne=true;
 let playerTwo=false;
+
 let clickCounter=0;
 let match=true;
-//Create way for players to make choices (Listener event and place to store players sequence)
+let playerOnePoints=0;
+
 
 //test array:
 const testingArray=["red","blue","green","yellow","red"];
-
+const automatedArray=[];
 //Function to compare user array and test array
 //IF Array value is NOT equal, STOPPING CONDITION. else if ARRAY values 
 //are equal AND test , continue 
@@ -21,19 +23,32 @@ function compareResults(){
  const b=playerChoice.toString();   
  console.log(a);
  console.log(b);
+
+ //if Player successfully followed
+ //sequence array is equal to array entered by player
 if(a===b){
     console.log("the arrays matches")
-    //Will need to add iterator to score when there is a match
-    
+
+    //resets player move counter and empty user array
+    clickCounter=0;
+    playerChoice.length=0;
+    playerOnePoints++;  
+    console.log("points "+playerOnePoints);
 }
+//if player 
 else{
     console.log("the arrays do not match")
+
+    clickCounter=0;
+    playerChoice.length=0;
+    playerOnePoints==playerOnePoints;
+    console.log(playerOnePoints);
+
     //Need to add action to take when array does not match
 }
 }
 
-
-
+//Create way for player(s) to make choices (Listener event and place to store players sequence)
 
 const playerChoice=[];
 const gameButtons=document.querySelectorAll(".button");
@@ -83,15 +98,27 @@ compareResults();
 })
 */
 
-//Create function to use for flashing color of butto box
+//Create function to use for flashing color of button box
 //when it is clicked
 
 function flashButton(button){
 button.style.backgroundColor=button.id;
  const timer=setTimeout(function(){
  button.style.backgroundColor="black";    
- console.log("timer ")},500);
+ console.log("timer ")},300);
 }
  
 
+
+//Random array generator for automated color sequences
+//used stackover flow as guidance on random selection
+//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+
+for(let i=0; i<5; i++){
+const colorChoice=["red","blue","green","yellow"];
+const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
+console.log("random color "+colorChoice[randomColorIndex]);
+automatedArray.push(colorChoice[randomColorIndex]);
+console.log(automatedArray)
+}
  
