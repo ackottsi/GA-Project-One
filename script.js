@@ -125,3 +125,20 @@ console.log(automatedArray)
 //creating function for automated sequence and showing it on grid
 //first iteration will use testArray
 
+function showSequence(arrSequence){
+    for (let i=0; i<arrSequence.length; i++){
+        console.log(arrSequence);
+    if(arrSequence[i].toString()=="red"){
+        gameButtons[0].style.backgroundColor="red";
+        const timer2=setTimeout(function(){
+            gameButtons[0].style.backgroundColor="black";    
+            console.log("timer2 ")},300);
+           }
+        }
+
+    }
+
+    const generator=document.querySelector("#sequence_button");
+    generator.addEventListener("click",function(){
+        showSequence(testingArray);     
+    })
