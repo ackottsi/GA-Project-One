@@ -19,10 +19,10 @@ function compareResults(){
 
     console.log("test Arr: "+testingArray);
     console.log("player choice Arr "+playerChoice);
- const a=testingArray.toString();
+ const a=automatedArray.toString();
  const b=playerChoice.toString();   
- console.log(a);
- console.log(b);
+ console.log("automated test array compare results function"+a);
+ console.log("players choice Arr compare results function"+b);
 
  //if Player successfully followed
  //sequence array is equal to array entered by player
@@ -61,12 +61,12 @@ for (let i=0; i<gameButtons.length; i++){
         flashButton(gameButtons[i]);
     
 
-        //below code will all player to enter choices until the number
+        //below code will allow player to enter choices until the number
         //of choices is equal to the number of choices in the test array
-        if(playerOne===true && clickCounter<testingArray.length){
+        if(playerOne===true && clickCounter<automatedArray.length){
         playerChoice.push(gameButtons[i].id);
         clickCounter++;
-        compareUniqueArrPostion(playerChoice,testingArray);
+        compareUniqueArrPostion(playerChoice,automatedArray);
        
         console.log("players choice array: "+playerChoice);
      
@@ -110,7 +110,7 @@ button.style.backgroundColor=button.id;
 }
  
 
-
+//RANDOM 
 //Random array generator for automated color sequences
 //used stackover flow as guidance on random selection
 //https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
@@ -123,9 +123,7 @@ automatedArray.push(colorChoice[randomColorIndex]);
 console.log(automatedArray)
 }
  
-//creating function for automated sequence and showing it on grid
-//first iteration will use testArray
-
+//CODE BELOW IS FOR SEQUENCING DELAY OF AUTOMATED SEQUENCES
 
 function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
@@ -171,8 +169,11 @@ function showSequence(arrSequence){
 }
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
-        showSequence(testingArray);     
+        showSequence(automatedArray);     
     })
+
+//END OF CODE BLOCK FOR SEQUENCING DELAY
+
 
 
     //create function that compares player choice array to each iteration of 
