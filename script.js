@@ -43,6 +43,7 @@ for (let i=0; i<gameButtons.length; i++){
         e.preventDefault();
         console.log(gameButtons[i]);
         console.log(gameButtons[i].id)
+        flashButton(gameButtons[i]);
     
 
         //below code will all player to enter choices until the number
@@ -69,7 +70,9 @@ compareResults();
  //
 
 
+
  //working on changing display background of buttons
+/*
  const background=document.querySelector("body");
  background.addEventListener("click",function(){
  background.style.backgroundColor="purple";
@@ -78,8 +81,17 @@ compareResults();
  console.log("timer ")},500);
  
 })
+*/
 
+//Create function to use for flashing color of butto box
+//when it is clicked
 
+function flashButton(button){
+button.style.backgroundColor=button.id;
+ const timer=setTimeout(function(){
+ button.style.backgroundColor="black";    
+ console.log("timer ")},500);
+}
  
 
  
