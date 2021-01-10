@@ -66,6 +66,7 @@ for (let i=0; i<gameButtons.length; i++){
         if(playerOne===true && clickCounter<testingArray.length){
         playerChoice.push(gameButtons[i].id);
         clickCounter++;
+        compareUniqueArrPostion(playerChoice,testingArray);
        
         console.log("players choice array: "+playerChoice);
      
@@ -125,20 +126,21 @@ console.log(automatedArray)
 //creating function for automated sequence and showing it on grid
 //first iteration will use testArray
 
+
 function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
         setTimeout(function(){console.log("delay test iternation "+i)
         
         console.log(arrSequence);
         
-
+        //if automated sequence value is red, flash red
         if(arrSequence[i].toString()=="red"){
             gameButtons[0].style.backgroundColor="red";
             const timer2=setTimeout(function(){
                 gameButtons[0].style.backgroundColor="black";    
                     console.log("timer2 ")},300);
         }
-
+        //if automated sequence value is blue, flash blue
         else if(arrSequence[i].toString()=="blue"){
             gameButtons[1].style.backgroundColor="blue";
             const timer2=setTimeout(function(){
@@ -146,6 +148,7 @@ function showSequence(arrSequence){
                     console.log("timer2 ")},300);
         }   
 
+        //if automated sequence value is green, flash green
         else if(arrSequence[i].toString()=="green"){
             gameButtons[2].style.backgroundColor="green";
             const timer2=setTimeout(function(){
@@ -153,6 +156,7 @@ function showSequence(arrSequence){
                     console.log("timer2 ")},300);
         }
 
+        //if automated sequence value is yellow, flash yellow
         else if(arrSequence[i].toString()=="yellow"){
             gameButtons[3].style.backgroundColor="yellow";
             const timer2=setTimeout(function(){
@@ -169,3 +173,22 @@ function showSequence(arrSequence){
     generator.addEventListener("click",function(){
         showSequence(testingArray);     
     })
+
+
+    //create function that compares player choice array to each iteration of 
+    //autmoated array
+
+    function compareUniqueArrPostion(Arr1,testArr){
+        for (let i=0; i<Arr1.length; i++){
+            console.log("Arr1 " +Arr1);
+            console.log("testArr "+testArr);
+
+        if (Arr1[i].toString()==testArr[i].toString()){
+            console.log("user choice "+i+"equals automated choice "+i);
+        }
+        else{
+            console.log("user choice "+i+"DOES NOT equal automated choice "+i);
+
+        }
+        }
+    }
