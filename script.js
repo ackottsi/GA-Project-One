@@ -23,13 +23,15 @@ function compareResults(){
  console.log(b);
 if(a===b){
     console.log("the arrays matches")
+    //Will need to add iterator to score when there is a match
     
 }
 else{
     console.log("the arrays do not match")
-    
+    //Need to add action to take when array does not match
 }
 }
+
 
 
 
@@ -65,3 +67,19 @@ compareResults();
  //Create any array to store Player's choices
  //Create a RANDOM sequence generator that generates sequence of increasing LENGTH
  //
+
+
+ //working on changing display background of buttons
+ const background=document.querySelector("body");
+ background.addEventListener("click",function(){
+ background.style.backgroundColor="purple";
+ const timer=setTimeout(function(){
+ background.style.backgroundColor="grey";    
+ console.log("timer ")},500);
+ 
+})
+
+
+ 
+
+ 
