@@ -24,6 +24,17 @@ h1{
     margin:10px;
     text-align: center;
    
- 
 
+}
+
+#sequence_button{
+    text-align: center;
+    margin: 20px;
+    background-color: lightskyblue;
+    color: white;
+    font-size: 25px;
+    border-radius: 20px 20px 20px 20px;
+    padding: 10px;
+    box-shadow: 10px 10px 32px -12px rgba(0,0,0,0.75);
+    
 }

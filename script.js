@@ -122,3 +122,6 @@ automatedArray.push(colorChoice[randomColorIndex]);
 console.log(automatedArray)
 }
  
+//creating function for automated sequence and showing it on grid
+//first iteration will use testArray
+
