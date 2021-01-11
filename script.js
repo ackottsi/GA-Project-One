@@ -5,7 +5,7 @@ let playerOne=true;
 let playerTwo=false;
 
 //Declaring round to be used as rounds counter
-let rounds=0;
+let round=1;
 
 //using click counter to track number of player moves
 let clickCounter=0;
@@ -22,41 +22,7 @@ let playerOnePoints=0;
 //test array:
 const testingArray=["red","blue","green","yellow","red"];
 const automatedArray=[];
-//Function to compare user array and test array
-//IF Array value is NOT equal, STOPPING CONDITION. else if ARRAY values 
-//are equal AND test , continue 
-function compareResults(){
 
-    console.log("test Arr: "+testingArray);
-    console.log("player choice Arr "+playerChoice);
- const a=automatedArray.toString();
- const b=playerChoice.toString();   
- console.log("automated test array compare results function"+a);
- console.log("players choice Arr compare results function"+b);
-
- //if Player successfully followed
- //sequence array is equal to array entered by player
-if(a===b){
-    console.log("the arrays matches")
-
-    //resets player move counter and empty user array
-    clickCounter=0;
-    playerChoice.length=0;
-    playerOnePoints++;  
-    console.log("points "+playerOnePoints);
-}
-//if player 
-else{
-    console.log("the arrays do not match")
-
-    clickCounter=0;
-    playerChoice.length=0;
-    playerOnePoints==playerOnePoints;
-    console.log(playerOnePoints);
-
-    //Need to add action to take when array does not match
-}
-}
 
 //Create way for player(s) to make choices (Listener event and place to store players sequence)
 
@@ -85,8 +51,14 @@ for (let i=0; i<gameButtons.length; i++){
 
     }
 
-if(playerChoice.length==testingArray.length)
+
+
+//IF THE NUMBER OF PLAYER MOVES IS EQUAL TO THE AUTOMATIC SEQUENCE LENGTH
+//CHECK TO SEE IF TOTAL ARRAY MATCHES
+
+if(playerChoice.length==automatedArray.length)
 compareResults();
+
     
     })
 }
@@ -97,20 +69,9 @@ compareResults();
 
 
 
- //working on changing display background of buttons
-/*
- const background=document.querySelector("body");
- background.addEventListener("click",function(){
- background.style.backgroundColor="purple";
- const timer=setTimeout(function(){
- background.style.backgroundColor="grey";    
- console.log("timer ")},500);
- 
-})
-*/
 
-//Create function to use for flashing color of button box
-//when it is clicked
+//FUNCTION BELOW IS USED FOR FLASHING COLOR OF BUTTON
+//BOX WHEN IT IS CLICKED BY THE PLAYER
 
 function flashButton(button){
 button.style.backgroundColor=button.id;
@@ -120,7 +81,7 @@ button.style.backgroundColor=button.id;
 }
  
 
-//RANDOM 
+//RANDOM SEQUENCE GENERATOR
 //Random array generator for automated color sequences
 //used stackover flow as guidance on random selection
 //https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
@@ -133,7 +94,9 @@ automatedArray.push(colorChoice[randomColorIndex]);
 console.log(automatedArray)
 }
  
-//CODE BELOW IS FOR SEQUENCING DELAY OF AUTOMATED SEQUENCES
+//CODE BELOW IS FOR SHOWING SEQUENCE ON THE GAME BOARD.  
+//SEQUENCING DELAY OF AUTOMATED SEQUENCES IS INCLUDED BY USING 
+//SET TIMEOUT METHOD
 
 function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
@@ -177,17 +140,18 @@ function showSequence(arrSequence){
 
 }
 }
+
+//CODE USED TO SHOW AUTOMATED SEQUENCE USING SEQUENCE BUTTON
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
         showSequence(automatedArray);     
     })
-
 //END OF CODE BLOCK FOR SEQUENCING DELAY
 
 
 
-    //create function that compares player choice array to each iteration of 
-    //autmoated array
+//BELOW FUNCTION COMPARES EACH MOVE OF THE PLAYERS CHOICE ARRAY
+//TO THE CORRESPONDING INDEX OF THE AUTOMATED ARRAY
 
     function compareUniqueArrPostion(Arr1,testArr){
         for (let i=0; i<Arr1.length; i++){
@@ -203,3 +167,39 @@ function showSequence(arrSequence){
         }
         }
     }
+
+    //Function to compare user array and test array
+//IF Array value is NOT equal, STOPPING CONDITION. else if ARRAY values 
+//are equal AND test , continue 
+function compareResults(){
+    round++;
+    console.log("test Arr: "+testingArray);
+    console.log("player choice Arr "+playerChoice);
+ const a=automatedArray.toString();
+ const b=playerChoice.toString();   
+ console.log("automated test array compare results function"+a);
+ console.log("players choice Arr compare results function"+b);
+
+ //if Player successfully followed
+ //sequence array is equal to array entered by player
+if(a===b){
+    console.log("the arrays matches")
+
+    //resets player move counter and empty user array
+    clickCounter=0;
+    playerChoice.length=0;
+    playerOnePoints++;  
+    console.log("points "+playerOnePoints);
+}
+//if player 
+else{
+    console.log("the arrays do not match")
+
+    clickCounter=0;
+    playerChoice.length=0;
+    playerOnePoints==playerOnePoints;
+    console.log(playerOnePoints);
+
+    //Need to add action to take when array does not match
+}
+}
