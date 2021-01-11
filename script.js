@@ -5,7 +5,7 @@ let playerOne=true;
 let playerTwo=false;
 
 //Declaring round to be used as rounds counter
-let roundCount=1;
+let roundCount=0;
 
 //using click counter to track number of player moves
 let clickCounter=0;
@@ -33,7 +33,7 @@ for (let i=0; i<gameButtons.length; i++){
     gameButtons[i].addEventListener("click",function(e){
         e.preventDefault();
         console.log(gameButtons[i]);
-        console.log(gameButtons[i].id)
+        console.log("color clicked is "+gameButtons[i].id)
         flashButton(gameButtons[i]);
     
 
@@ -87,6 +87,7 @@ button.style.backgroundColor=button.id;
 //https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 
 function generateNewSequence(arrLength){
+console.log("this is the array length being passed into generate new sequence "+arrLength);
  for(let i=0; i<arrLength; i++){
 const colorChoice=["red","blue","green","yellow"];
 const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
@@ -94,6 +95,8 @@ console.log("random color "+colorChoice[randomColorIndex]);
 automatedArray.push(colorChoice[randomColorIndex]);
 console.log(automatedArray)
 }
+playerChoice.length=0;
+clickCounter=0;
 }
  
 //CODE BELOW IS FOR SHOWING SEQUENCE ON THE GAME BOARD.  
@@ -158,25 +161,25 @@ function showSequence(arrSequence){
 
     function compareUniqueArrPostion(Arr1,testArr){
         for (let i=0; i<Arr1.length; i++){
-            console.log("Arr1 " +Arr1);
-            console.log("testArr "+testArr);
+            // console.log("Arr1 " +Arr1);
+            // console.log("testArr "+testArr);
 
         if (Arr1[i].toString()==testArr[i].toString()){
-            console.log("user choice "+i+"equals automated choice "+i);
+            // console.log("user choice "+i+"equals automated choice "+i);
         }
         else{
-            console.log("user choice "+i+"DOES NOT equal automated choice "+i);
+            // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
             //PUT A BIG X OR SOME OTHER ANIMATION THAT SHOWS A FAILED INPUT
 
         }
         }
     }
 
-    //Function to compare user array and test array
+    //Function to compare user array and automated sequence
 //IF Array value is NOT equal, STOPPING CONDITION. else if ARRAY values 
 //are equal AND test , continue 
 function compareResults(){
-    console.log("test Arr: "+testingArray);
+    console.log("automated sequence: "+automatedArray);
     console.log("player choice Arr "+playerChoice);
  const a=automatedArray.toString();
  const b=playerChoice.toString();   
@@ -194,12 +197,15 @@ if(a===b){
     playerOnePoints++;  
     roundCount++;
     console.log("points "+playerOnePoints);
-    console.log("testing console logging")
+    // console.log("testing console logging");
+
+
     generateNewSequence(roundCount);
+    showSequence(automatedArray);
 }
 //if player 
 else{
-    console.log("the arrays do not match")
+    console.log("the arrays do not match");
 
     clickCounter=0;
     playerChoice.length=0;
