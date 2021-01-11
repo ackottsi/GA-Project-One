@@ -5,7 +5,7 @@ let playerOne=true;
 let playerTwo=false;
 
 //Declaring round to be used as rounds counter
-let round=1;
+let roundCount=1;
 
 //using click counter to track number of player moves
 let clickCounter=0;
@@ -81,17 +81,19 @@ button.style.backgroundColor=button.id;
 }
  
 
-//RANDOM SEQUENCE GENERATOR
+//RANDOM SEQUENCE GENERATOR FUNCTION
 //Random array generator for automated color sequences
 //used stackover flow as guidance on random selection
 //https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 
-for(let i=0; i<5; i++){
+function generateNewSequence(arrLength){
+ for(let i=0; i<arrLength; i++){
 const colorChoice=["red","blue","green","yellow"];
 const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
 console.log("random color "+colorChoice[randomColorIndex]);
 automatedArray.push(colorChoice[randomColorIndex]);
 console.log(automatedArray)
+}
 }
  
 //CODE BELOW IS FOR SHOWING SEQUENCE ON THE GAME BOARD.  
@@ -144,7 +146,8 @@ function showSequence(arrSequence){
 //CODE USED TO SHOW AUTOMATED SEQUENCE USING SEQUENCE BUTTON
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
-        showSequence(automatedArray);     
+        console.log("roundCount"+roundCount); 
+        showSequence(automatedArray);
     })
 //END OF CODE BLOCK FOR SEQUENCING DELAY
 
@@ -163,6 +166,7 @@ function showSequence(arrSequence){
         }
         else{
             console.log("user choice "+i+"DOES NOT equal automated choice "+i);
+            //PUT A BIG X OR SOME OTHER ANIMATION THAT SHOWS A FAILED INPUT
 
         }
         }
@@ -172,7 +176,6 @@ function showSequence(arrSequence){
 //IF Array value is NOT equal, STOPPING CONDITION. else if ARRAY values 
 //are equal AND test , continue 
 function compareResults(){
-    round++;
     console.log("test Arr: "+testingArray);
     console.log("player choice Arr "+playerChoice);
  const a=automatedArray.toString();
@@ -189,7 +192,10 @@ if(a===b){
     clickCounter=0;
     playerChoice.length=0;
     playerOnePoints++;  
+    roundCount++;
     console.log("points "+playerOnePoints);
+    console.log("testing console logging")
+    generateNewSequence(roundCount);
 }
 //if player 
 else{
