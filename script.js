@@ -19,6 +19,15 @@ let playerOnePoints=0;
 const automatedArray=[];
 
 
+//flash speed of player selection flash
+let flashSpeed=200;
+
+//transition time speed between steps of automated sequence
+let transitionSpeed=400;
+
+//delay beteween new rounds
+let delayBetweeenRounds=1000;
+
 
 
 /*CODE BELOW ALLOWS USER TO ENTER MOVES FOR THE GAME.
@@ -44,9 +53,10 @@ for (let i=0; i<gameButtons.length; i++){
         clickCounter++;
         compareUniqueArrPostion(playerChoice,automatedArray);
        
-        console.log("players choice array: "+playerChoice);
+        // console.log("players choice array: "+playerChoice);
      
     }
+    
 //IF THE NUMBER OF PLAYER MOVES IS EQUAL TO THE AUTOMATIC SEQUENCE LENGTH
 //CHECK TO SEE IF TOTAL ARRAY MATCHES
 if(playerChoice.length==automatedArray.length)
@@ -64,9 +74,11 @@ function flashButton(button){
 button.style.backgroundColor=button.id;
  const timer=setTimeout(function(){
  button.style.backgroundColor="black";    
- console.log("timer ")},300);
+ console.log("timer ")},flashSpeed);
 }
  
+
+
 
 /*RANDOM SEQUENCE GENERATOR FUNCTION
 Random array generator for automated color sequences
@@ -79,7 +91,7 @@ console.log("this is the array length being passed into generate new sequence "+
 const colorChoice=["red","blue","green","yellow"];
 
 for(let i=0; i<arrLength; i++){
-    console.log("iterator of loop that pushes colors to automated sequence: "+i);
+    // console.log("iterator of loop that pushes colors to automated sequence: "+i);
 const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
 console.log("random color "+colorChoice[randomColorIndex]);
 automatedArray.push(colorChoice[randomColorIndex]);
@@ -105,14 +117,14 @@ function showSequence(arrSequence){
             gameButtons[0].style.backgroundColor="red";
             const timer2=setTimeout(function(){
                 gameButtons[0].style.backgroundColor="black";    
-                    console.log("timer2 ")},300);
+                    console.log("timer2 ")},flashSpeed);
         }
         //if automated sequence value is blue, flash blue
         else if(arrSequence[i].toString()=="blue"){
             gameButtons[1].style.backgroundColor="blue";
             const timer2=setTimeout(function(){
                 gameButtons[1].style.backgroundColor="black";    
-                    console.log("timer2 ")},300);
+                    console.log("timer2 ")},flashSpeed);
         }   
 
         //if automated sequence value is green, flash green
@@ -120,7 +132,7 @@ function showSequence(arrSequence){
             gameButtons[2].style.backgroundColor="green";
             const timer2=setTimeout(function(){
                 gameButtons[2].style.backgroundColor="black";    
-                    console.log("timer2 ")},300);
+                    console.log("timer2 ")},flashSpeed);
         }
 
         //if automated sequence value is yellow, flash yellow
@@ -128,28 +140,32 @@ function showSequence(arrSequence){
             gameButtons[3].style.backgroundColor="yellow";
             const timer2=setTimeout(function(){
                 gameButtons[3].style.backgroundColor="black";    
-                    console.log("timer2 ")},300);
+                    console.log("timer2 ")},flashSpeed);
         }  
         
     //CONTROLS TIMING OF AUTOMATED SEQUENCE TRANSITION       
-    },600*i);
+    },transitionSpeed*i);
 
 }
 }
 
-//CODE USED TO SHOW AUTOMATED SEQUENCE USING SEQUENCE BUTTON
+
+/*CODE BELOW INVOKES showSequence FUNCTION WHEN THE 
+GENERATE SEQUENCE BUTTON IS CLICKED*/
+
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
         console.log("roundCount"+roundCount); 
         showSequence(automatedArray);
         playerChoice.length=0;
     })
-//END OF CODE BLOCK FOR SEQUENCING DELAY
 
 
 
-//BELOW FUNCTION COMPARES EACH MOVE OF THE PLAYERS CHOICE ARRAY
-//TO THE CORRESPONDING INDEX OF THE AUTOMATED ARRAY
+
+/*BELOW FUNCTION COMPARES EACH MOVE OF THE PLAYERS CHOICE ARRAY
+TO THE CORRESPONDING INDEX OF THE AUTOMATED ARRAY.  IF THE PLAYER ENTERS 
+AN INCORRECT MOVE, THE GAME ENDS. */
 
     function compareUniqueArrPostion(Arr1,testArr){
         for (let i=0; i<Arr1.length; i++){
@@ -162,12 +178,22 @@ function showSequence(arrSequence){
             document.querySelector("#SCORE").style.fontSize="50px";
             document.querySelector("#ROUND").textContent="GAME OVER!";
             document.querySelector("#SCORE").textContent=`FINAL SCORE:${playerOnePoints} POINTS`;
-        }
-        else{
-            // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
-          
+
+            //INSERT RESET FUNCTION HERE
+            // const squareOne=document.querySelector("#red");
+            // console.log(squareOne);
+            // squareOne.off('click');
+
+
+
+            
 
         }
+        // else{
+        //     // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
+          
+
+        // }
         }
     }
 
@@ -199,12 +225,12 @@ if(a==b){
     // console.log("points "+playerOnePoints);
     // console.log("testing console logging");
 
-
+    
     
     generateNewSequence(1);
     
     //set timeout creates delay between sequence showing for next round
-    setTimeout(function(){showSequence(automatedArray);},1500);
+    setTimeout(function(){showSequence(automatedArray);},delayBetweeenRounds);
 
     document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
     document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
