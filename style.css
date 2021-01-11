@@ -1,9 +1,10 @@
 body{
-    background-color: grey;
+    background-color:#000000cc;
 }
 
 h1{
     text-align: center;
+    color:#55c379b0;
 }
 
 .gameboard{
@@ -17,6 +18,11 @@ h1{
     background-color: Black;
 
 }
+
+h2{
+    color:#55c379b0;
+}
+
 
 
 .button{
@@ -39,12 +45,13 @@ h1{
 #sequence_button{
     text-align: center;
     margin: 20px;
-    background-color: lightskyblue;
-    color: white;
+    background-color: #72ff6b52;
     font-size: 25px;
     border-radius: 20px 20px 20px 20px;
     padding: 10px;
-    box-shadow: 10px 10px 32px -12px rgba(0,0,0,0.75);
+    width: 20%;
+    display:inline-block;
+    
     
 }
 

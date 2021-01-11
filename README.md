@@ -2,6 +2,7 @@
 
 ## Simon Says Game
 
+Simon Says is a game where a player follows a sequence.  The sequence grows in length after successful completion of a round by the player.
 
 ## Preview 
 
@@ -25,15 +26,13 @@ No Installation Instructions
 
 ## Unsolved Problems and Additionally desired features
 
+*When game is over, would like for gameboard to no longer respond to clicks
+*add a reset button to start the game over
+*speed up sequence timing as the rounds increase
+*add feature for two players
 
 
 
 
 
 
-A readme.md file, including
-Explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
-Follow this mini-lesson on writing documentation for your project
-Sample project readmes:
-https://github.com/reemharbi/BloodApp
-https://github.com/AlkhaldiAzzam/Project1-Tic-Tac-Toe
