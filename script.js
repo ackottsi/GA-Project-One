@@ -2,32 +2,29 @@ console.log("javaScript Link Works!");
 
 //Need to declare two players
 let playerOne=true;
-let playerTwo=false;
+
 
 //Declaring round to be used as rounds counter
 let roundCount=1;
 
 //using click counter to track number of player moves
 let clickCounter=0;
-// let match=true;
+
 
 //variables to track player point totals
 let playerOnePoints=0;
 
-
-console.log(document.querySelectorAll(".SCOREBOARD"));
-
-
-
-
-
-
 //test array:
-const testingArray=["red","blue","green","yellow","red"];
+// const testingArray=["red","blue","green","yellow","red"];
 const automatedArray=[];
 
 
-//Create way for player(s) to make choices (Listener event and place to store players sequence)
+
+
+/*CODE BELOW ALLOWS USER TO ENTER MOVES FOR THE GAME.
+THE MOVES ARE STORED IN THE "playerChoice" ARRAY.  WHEN THE LENGTH
+OF THE "playerChoice" ARRAY IS EQUAL TO THE AUTOMATED SEQUENCE LENGTH,
+THE compareResults FUNCTION IS INVOKED.*/
 
 const playerChoice=[];
 const gameButtons=document.querySelectorAll(".button");
@@ -49,32 +46,19 @@ for (let i=0; i<gameButtons.length; i++){
        
         console.log("players choice array: "+playerChoice);
      
-        //create function that will compare array values to invoke here;
-
-
     }
-
-
-
 //IF THE NUMBER OF PLAYER MOVES IS EQUAL TO THE AUTOMATIC SEQUENCE LENGTH
 //CHECK TO SEE IF TOTAL ARRAY MATCHES
-
 if(playerChoice.length==automatedArray.length)
-compareResults();
-
-    
+compareResults();   
     })
 }
 
- //Create any array to store Player's choices
- //Create a RANDOM sequence generator that generates sequence of increasing LENGTH
- //
 
 
-
-
-//FUNCTION BELOW IS USED FOR FLASHING COLOR OF BUTTON
-//BOX WHEN IT IS CLICKED BY THE PLAYER
+/*FUNCTION BELOW IS USED FOR FLASHING COLOR OF BUTTON
+BOX WHEN IT IS CLICKED BY THE PLAYER
+*/
 
 function flashButton(button){
 button.style.backgroundColor=button.id;
@@ -84,10 +68,11 @@ button.style.backgroundColor=button.id;
 }
  
 
-//RANDOM SEQUENCE GENERATOR FUNCTION
-//Random array generator for automated color sequences
-//used stackover flow as guidance on random selection
-//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+/*RANDOM SEQUENCE GENERATOR FUNCTION
+Random array generator for automated color sequences
+used stackover flow as guidance on random selection
+https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+*/
 
 function generateNewSequence(arrLength){
 console.log("this is the array length being passed into generate new sequence "+arrLength);
@@ -105,9 +90,9 @@ playerChoice.length=0;
 clickCounter=0;
 }
  
-//CODE BELOW IS FOR SHOWING SEQUENCE ON THE GAME BOARD.  
-//SEQUENCING DELAY OF AUTOMATED SEQUENCES IS INCLUDED BY USING 
-//SET TIMEOUT METHOD
+/*CODE BELOW IS FOR SHOWING SEQUENCE ON THE GAME BOARD.  
+SEQUENCING DELAY OF AUTOMATED SEQUENCES IS INCLUDED BY USING 
+SET TIMEOUT METHOD*/
 
 function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
@@ -176,7 +161,7 @@ function showSequence(arrSequence){
             document.querySelector("#ROUND").style.fontSize="50px";
             document.querySelector("#SCORE").style.fontSize="50px";
             document.querySelector("#ROUND").textContent="GAME OVER!";
-            document.querySelector("#SCORE").textContent=`FINAL SCORE:${playerOnePoints}`;
+            document.querySelector("#SCORE").textContent=`FINAL SCORE:${playerOnePoints} POINTS`;
         }
         else{
             // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
@@ -197,19 +182,21 @@ function compareResults(){
  console.log("automated test array compare results function"+a);
  console.log("players choice Arr compare results function"+b);
 
- //if Player successfully followed
+ //if Player successfully followed sequence
  //sequence array is equal to array entered by player
 if(a==b){
     console.log("the arrays matches")
 
-    //resets player move counter and empty user array
+    /*resets player move counter and empty user array.  iterate round counter and
+    add point to player total.
+    */
+
     clickCounter=0;
-    
     playerChoice.length=0;
-    // automatedArray.length=0;
     playerOnePoints++;  
     roundCount++;
-    console.log("points "+playerOnePoints);
+
+    // console.log("points "+playerOnePoints);
     // console.log("testing console logging");
 
 
