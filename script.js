@@ -15,6 +15,7 @@ let clickCounter=0;
 let playerOnePoints=0;
 
 
+console.log(document.querySelectorAll(".SCOREBOARD"));
 
 
 
@@ -170,12 +171,16 @@ function showSequence(arrSequence){
             // console.log("Arr1 " +Arr1);
             // console.log("testArr "+testArr);
 
-        if (Arr1[i].toString()==testArr[i].toString()){
-            // console.log("user choice "+i+"equals automated choice "+i);
+        if (Arr1[i].toString()!==testArr[i].toString()){
+            // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
+            document.querySelector("#ROUND").style.fontSize="50px";
+            document.querySelector("#SCORE").style.fontSize="50px";
+            document.querySelector("#ROUND").textContent="GAME OVER!";
+            document.querySelector("#SCORE").textContent=`FINAL SCORE:${playerOnePoints}`;
         }
         else{
             // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
-            //PUT A BIG X OR SOME OTHER ANIMATION THAT SHOWS A FAILED INPUT
+          
 
         }
         }
