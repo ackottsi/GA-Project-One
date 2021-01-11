@@ -23,6 +23,12 @@ h1{
     border:solid green;
     margin:10px;
     text-align: center;
+    display:inline-block;
+    vertical-align: middle;
+    
+  
+   
+
    
 
 }
@@ -37,4 +43,26 @@ h1{
     padding: 10px;
     box-shadow: 10px 10px 32px -12px rgba(0,0,0,0.75);
     
+}
+
+#red{
+    color:red;
+    border:solid red;
+   
+
+}
+
+#blue{
+    color:blue;
+    border: solid #4666FF;
+}
+
+#yellow{
+    color:yellow;
+    border:solid #faed27;
+}
+
+#green{
+    color:green;
+    border: solid lime;
 }

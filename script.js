@@ -4,9 +4,19 @@ console.log("javaScript Link Works!");
 let playerOne=true;
 let playerTwo=false;
 
+//Declaring round to be used as rounds counter
+let rounds=0;
+
+//using click counter to track number of player moves
 let clickCounter=0;
-let match=true;
+// let match=true;
+
+//variables to track player point totals
 let playerOnePoints=0;
+
+
+
+
 
 
 //test array:
@@ -106,7 +116,7 @@ function flashButton(button){
 button.style.backgroundColor=button.id;
  const timer=setTimeout(function(){
  button.style.backgroundColor="black";    
- console.log("timer ")},300);
+ console.log("timer ")},200);
 }
  
 
