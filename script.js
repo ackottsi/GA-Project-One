@@ -79,7 +79,7 @@ function flashButton(button){
 button.style.backgroundColor=button.id;
  const timer=setTimeout(function(){
  button.style.backgroundColor="black";    
- console.log("timer ")},200);
+ console.log("timer ")},300);
 }
  
 
@@ -146,7 +146,7 @@ function showSequence(arrSequence){
         }  
         
     //CONTROLS TIMING OF AUTOMATED SEQUENCE TRANSITION       
-    },750*i);
+    },600*i);
 
 }
 }
@@ -208,8 +208,14 @@ if(a==b){
     // console.log("testing console logging");
 
 
+    
     generateNewSequence(1);
-    showSequence(automatedArray);
+    
+    //set timeout creates delay between sequence showing for next round
+    setTimeout(function(){showSequence(automatedArray);},1500);
+
+    document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
+    document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
 }
 //if player 
 else{

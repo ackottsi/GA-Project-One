@@ -25,13 +25,16 @@ h1{
     text-align: center;
     display:inline-block;
     vertical-align: middle;
-    
-  
-   
-
-   
-
 }
+
+ h2{
+     text-align:center;
+ } 
+   
+
+   
+
+
 
 #sequence_button{
     text-align: center;
