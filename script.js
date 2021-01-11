@@ -5,7 +5,7 @@ let playerOne=true;
 let playerTwo=false;
 
 //Declaring round to be used as rounds counter
-let roundCount=0;
+let roundCount=1;
 
 //using click counter to track number of player moves
 let clickCounter=0;
@@ -13,6 +13,8 @@ let clickCounter=0;
 
 //variables to track player point totals
 let playerOnePoints=0;
+
+
 
 
 
@@ -88,13 +90,16 @@ button.style.backgroundColor=button.id;
 
 function generateNewSequence(arrLength){
 console.log("this is the array length being passed into generate new sequence "+arrLength);
- for(let i=0; i<arrLength; i++){
 const colorChoice=["red","blue","green","yellow"];
+
+for(let i=0; i<arrLength; i++){
+    console.log("iterator of loop that pushes colors to automated sequence: "+i);
 const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
 console.log("random color "+colorChoice[randomColorIndex]);
 automatedArray.push(colorChoice[randomColorIndex]);
-console.log(automatedArray)
 }
+
+console.log("result of newly created sequence "+automatedArray);
 playerChoice.length=0;
 clickCounter=0;
 }
@@ -105,7 +110,7 @@ clickCounter=0;
 
 function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
-        setTimeout(function(){console.log("delay test iternation "+i)
+        setTimeout(function(){console.log("delay test iteration "+i)
         
         console.log(arrSequence);
         
@@ -151,6 +156,7 @@ function showSequence(arrSequence){
     generator.addEventListener("click",function(){
         console.log("roundCount"+roundCount); 
         showSequence(automatedArray);
+        playerChoice.length=0;
     })
 //END OF CODE BLOCK FOR SEQUENCING DELAY
 
@@ -188,19 +194,21 @@ function compareResults(){
 
  //if Player successfully followed
  //sequence array is equal to array entered by player
-if(a===b){
+if(a==b){
     console.log("the arrays matches")
 
     //resets player move counter and empty user array
     clickCounter=0;
+    
     playerChoice.length=0;
+    // automatedArray.length=0;
     playerOnePoints++;  
     roundCount++;
     console.log("points "+playerOnePoints);
     // console.log("testing console logging");
 
 
-    generateNewSequence(roundCount);
+    generateNewSequence(1);
     showSequence(automatedArray);
 }
 //if player 
@@ -215,3 +223,8 @@ else{
     //Need to add action to take when array does not match
 }
 }
+
+
+//GENERATE INITIAL SEQUENCE AND SHOW SEQUENCE TO START GAME:
+generateNewSequence(roundCount);
+showSequence(automatedArray);
