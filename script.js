@@ -56,7 +56,7 @@ for (let i=0; i<gameButtons.length; i++){
         // console.log("players choice array: "+playerChoice);
      
     }
-    
+
 //IF THE NUMBER OF PLAYER MOVES IS EQUAL TO THE AUTOMATIC SEQUENCE LENGTH
 //CHECK TO SEE IF TOTAL ARRAY MATCHES
 if(playerChoice.length==automatedArray.length)
@@ -248,7 +248,37 @@ else{
 }
 }
 
+/*FUNCTION NEEDED TO RESET GAME WITHOUT BROWSER RESET*/
+function resetGame(){
+
+    //reset tracking variables to original state
+    clickCounter=0;
+    playerOnePoints=0;
+    roundCount=1;
+
+    //reset arrays to empty
+    playerChoice.length=0;
+    automatedArray.length=0;
+
+
+    document.querySelector("#ROUND").style.fontSize="1.5em";
+    document.querySelector("#SCORE").style.fontSize="1.5em";    
+    document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
+    document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
+    generateNewSequence(roundCount);
+    showSequence(automatedArray);
+
+}
+
+
+//EVENT LISTENER FOR RESET BUTTON
+const rst=document.querySelector("#rst");
+rst.addEventListener("click",resetGame);
+
+
+
 
 //GENERATE INITIAL SEQUENCE AND SHOW SEQUENCE TO START GAME:
+
 generateNewSequence(roundCount);
 showSequence(automatedArray);
