@@ -32,6 +32,7 @@ h2{
     display:flex;
     align-items: center;
     font-size: 20px;
+    border-radius: 30px;
 
 }
 
@@ -90,7 +91,7 @@ div{
 }
 
 #blue{
-    color:#4666FF;
+    color:blue;
     border: solid #4666FF;
 }
 
@@ -99,8 +100,8 @@ div{
     border:solid #faed27;
 }
 
-#green{
-    color:lime;
+#lime{
+    color:green;
     border: solid lime;
 
 }

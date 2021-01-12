@@ -15,7 +15,7 @@ let clickCounter=0;
 let playerOnePoints=0;
 
 //test array:
-// const testingArray=["red","blue","green","yellow","red"];
+// const testingArray=["red","blue","lime","yellow","red"];
 const automatedArray=[];
 
 
@@ -129,7 +129,7 @@ https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javasc
 
 function generateNewSequence(arrLength){
 console.log("this is the array length being passed into generate new sequence "+arrLength);
-const colorChoice=["red","blue","green","yellow"];
+const colorChoice=["red","blue","lime","yellow"];
 
 for(let i=0; i<arrLength; i++){
     // console.log("iterator of loop that pushes colors to automated sequence: "+i);
@@ -168,9 +168,9 @@ function showSequence(arrSequence){
                     console.log("timer2 ")},flashSpeed);
         }   
 
-        //if automated sequence value is green, flash green
-        else if(arrSequence[i].toString()=="green"){
-            gameButtons[2].style.backgroundColor="green";
+        //if automated sequence value is lime, flash lime
+        else if(arrSequence[i].toString()=="lime"){
+            gameButtons[2].style.backgroundColor="lime";
             const timer2=setTimeout(function(){
                 gameButtons[2].style.backgroundColor="black";    
                     console.log("timer2 ")},flashSpeed);
