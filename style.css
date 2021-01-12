@@ -27,7 +27,8 @@ h2{
 }
 
 
-
+/*aligns text content to center of game buttons
+creates space between buttons.*/
 .button{
     
     margin:10px;
@@ -55,7 +56,7 @@ div{
     justify-content: center;
 }
 
-
+/*formatting for sequence button*/
 #sequence_button{
     text-align: center;
     margin: 0px 5px auto;
@@ -67,7 +68,7 @@ div{
 }
 
 
-
+/*formatting for reset button*/
 #rst{
     text-align: center;
     margin: 0px 5px auto;
@@ -78,33 +79,38 @@ div{
     width: 120px;  
 }
 
+
+/*centers control buttons at bottom of game screen*/
 .controls{
     text-align: center;
     display: flex;
     margin: 25px;
+    transition: 300;
 }
-
 
 
 #red{
     color:red;
     border:solid red;
-   
-
 }
+
 
 #blue{
     color:blue;
     border: solid #4666FF;
 }
 
+
 #yellow{
     color:#faed27;
     border:solid #faed27;
 }
 
+
+
 #lime{
     color: lime;
     border: solid lime;
-
 }
+
+

@@ -26,10 +26,29 @@ No Installation Instructions
 
 ## Features List and Additionally Desired Features
 
-*When game is over, would like for gameboard to no longer respond to clicks*
-*add a reset button to start the game over*
-*speed up sequence timing as the rounds incease*
-*add feature for two players*
+Markup:
+* COMPLETED FEATURES
+    * Reset button to reset game to original state
+    * Automated sequence that displays on game board
+    * Tracks rounds and points
+    * Buttons flash when clicked
+    * Created way for user to input moves and stored them to an array
+    * Logic conditions to end game once the player has an incorrect entry
+    * Game over message displays with points total
+
+
+* FUTURE DESIRED FEATURES
+    * When game is over, would like for gameboard to no longer respond to clicks
+    * add a reset button to start the game over
+    * speed up sequence timing as the rounds incease
+    * add feature for two players
+    * add feature for sound on click
+    * add player name at start.  Use player name to store score
+    * add hover feature to control bars at the bottom of game page
+
+
+
+
 
 
 
