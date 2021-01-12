@@ -24,6 +24,7 @@ h1{
 
 h2{
     color:#55c379b0;
+    text-align: center;
 }
 
 
@@ -40,43 +41,20 @@ creates space between buttons.*/
 
 }
 
-
- h2{
-     text-align:center;
- } 
-   
-
 button{
-    text-align:center;
     font-size: 20px;
     color:tan;
+    text-align: center;
+    margin: 0px 15px auto;
+    background-color: #72ff6b52;
+    border-radius: 20px 20px 20px 20px;
+    padding: 5px;
+    width: 130px;  
+    border:solid tan;
 }
 
 div{
     justify-content: center;
-}
-
-/*formatting for sequence button*/
-#sequence_button{
-    text-align: center;
-    margin: 0px 5px auto;
-    background-color: #72ff6b52;
-    font-size: 25px;
-    border-radius: 20px 20px 20px 20px;
-    padding: 10px;
-    width: 120px;
-}
-
-
-/*formatting for reset button*/
-#rst{
-    text-align: center;
-    margin: 0px 5px auto;
-    background-color: #72ff6b52;
-    font-size: 25px;
-    border-radius: 20px 20px 20px 20px;
-    padding: 10px;
-    width: 120px;  
 }
 
 
@@ -85,7 +63,6 @@ div{
     text-align: center;
     display: flex;
     margin: 25px;
-    transition: 300;
 }
 
 
