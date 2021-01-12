@@ -33,7 +33,6 @@ h2{
     vertical-align: middle;
 }
 
-.button:hover{background-color: #3e8e41}
 
  h2{
      text-align:center;
@@ -53,7 +52,7 @@ div{
 
 #sequence_button{
     text-align: center;
-    margin: 20px auto;
+    margin: 0px 5px auto;
     background-color: #72ff6b52;
     font-size: 25px;
     border-radius: 20px 20px 20px 20px;
@@ -65,7 +64,7 @@ div{
 
 #rst{
     text-align: center;
-    margin: 20px auto;
+    margin: 0px 5px auto;
     background-color: #72ff6b52;
     font-size: 25px;
     border-radius: 20px 20px 20px 20px;
@@ -75,6 +74,9 @@ div{
 
 .controls{
     text-align: center;
+    display: flex;
+    margin: 25px;
+}
 
 }
 

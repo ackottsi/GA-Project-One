@@ -24,12 +24,12 @@ Four squares (divs) created and had event listeners and styling added.  Created 
 No Installation Instructions
 
 
-## Unsolved Problems and Additionally desired features
+## Features List and Additionally Desired Features
 
-*When game is over, would like for gameboard to no longer respond to clicks
-*add a reset button to start the game over
-*speed up sequence timing as the rounds increase
-*add feature for two players
+*When game is over, would like for gameboard to no longer respond to clicks*
+*add a reset button to start the game over*
+*speed up sequence timing as the rounds incease*
+*add feature for two players*
 
 
 

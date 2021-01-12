@@ -37,6 +37,43 @@ THE compareResults FUNCTION IS INVOKED.*/
 
 const playerChoice=[];
 const gameButtons=document.querySelectorAll(".button");
+activateGameBoard();
+
+
+
+function activateGameBoard(){
+    for (let i=0; i<gameButtons.length; i++){
+    console.log(gameButtons[i]);
+    gameButtons[i].addEventListener("click",function(e){
+        e.preventDefault();
+        console.log(gameButtons[i]);
+        console.log("color clicked is "+gameButtons[i].id)
+        flashButton(gameButtons[i]);
+    
+
+        //below code will allow player to enter choices until the number
+        //of choices is equal to the number of choices in the test array
+        if(playerOne===true && clickCounter<automatedArray.length){
+        playerChoice.push(gameButtons[i].id);
+        clickCounter++;
+        compareUniqueArrPostion(playerChoice,automatedArray);
+       
+        // console.log("players choice array: "+playerChoice);
+     
+    }
+    
+
+//IF THE NUMBER OF PLAYER MOVES IS EQUAL TO THE AUTOMATIC SEQUENCE LENGTH
+//CHECK TO SEE IF TOTAL ARRAY MATCHES
+if(playerChoice.length==automatedArray.length)
+compareResults();   
+        })
+    }
+}
+
+
+//working game board creation
+/*
 for (let i=0; i<gameButtons.length; i++){
     console.log(gameButtons[i]);
     gameButtons[i].addEventListener("click",function(e){
@@ -56,6 +93,7 @@ for (let i=0; i<gameButtons.length; i++){
         // console.log("players choice array: "+playerChoice);
      
     }
+    
 
 //IF THE NUMBER OF PLAYER MOVES IS EQUAL TO THE AUTOMATIC SEQUENCE LENGTH
 //CHECK TO SEE IF TOTAL ARRAY MATCHES
@@ -63,6 +101,9 @@ if(playerChoice.length==automatedArray.length)
 compareResults();   
     })
 }
+*/
+
+
 
 
 
@@ -179,14 +220,15 @@ AN INCORRECT MOVE, THE GAME ENDS. */
             document.querySelector("#ROUND").textContent="GAME OVER!";
             document.querySelector("#SCORE").textContent=`FINAL SCORE:${playerOnePoints} POINTS`;
 
-            //INSERT RESET FUNCTION HERE
-            // const squareOne=document.querySelector("#red");
-            // console.log(squareOne);
-            // squareOne.off('click');
+            //WOULD LIKE TO ADD A FEATURE HERE TO TURN OFF EVENT LISTENERS TO PREVENT 
+            //ADDITIONAL MOVES
+            // let freezeButton=[];
+            // for(let i=0; i<gameButtons.length; i++){
+            // freezeButton[i]=gameButtons[i].cloneNode(true);
+            // gameButtons[i].parentNode.removeChild(freezeButton[i],gameButtons[i])     
+            // }
 
 
-
-            
 
         }
         // else{
