@@ -62,7 +62,7 @@ No Installation Instructions
 
 * Link to Game Site
 
-![Simon Says Game Link}(https://ackottsi.github.io/)
+![Simon Says Game Link](https://ackottsi.github.io/)
 
 
 
