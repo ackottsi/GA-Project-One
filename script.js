@@ -169,7 +169,9 @@ GENERATE SEQUENCE BUTTON IS CLICKED
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
         console.log("roundCount"+roundCount); 
-        showSequence(automatedArray);
+        setTimeout(showSequence,500,automatedArray);
+        document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
+        document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
         playerChoice.length=0;
     })
 
@@ -272,7 +274,7 @@ function resetGame(){
     document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
     document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
     generateNewSequence(roundCount);
-    showSequence(automatedArray);
+    setTimeout(showSequence,500,automatedArray);
 
 }
 
