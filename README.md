@@ -49,6 +49,11 @@ No Installation Instructions
         *Array comparison logic 
 
 
+## SCREEN SHOTS AND LINKS
+
+* Screen Shot of Game
+
+![image of game](https://user-images.githubusercontent.com/74615798/104464104-2fb8aa80-5578-11eb-8bfb-a1df3ddc5411.png)
 
 
 
