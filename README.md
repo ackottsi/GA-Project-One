@@ -9,6 +9,7 @@ Simon Says is a game where a player follows a sequence.  The sequence grows in l
 This is a Simon Says game.  The goal is for a player to follow sequences of increasing length.  Once a player has an incorrect move or entry, the game ends.
 
 ## Technologies Used
+
 javaScript, CSS, and HTML used.  DOM manipulation is used freqently.
 
 
@@ -39,23 +40,29 @@ No Installation Instructions
 
 
 * FUTURE DESIRED FEATURES and CLEAN UP
-    * speed up sequence timing as the rounds incease
-    * add feature for two players
-    * add feature for sound on click and when automated sequence runs
-    * add player name at start.  Use player name to store score
-    * add hover feature to control bars at the bottom of game page
-    * modify code to support different screen sizes
+    * Speed up sequence timing as the rounds incease
+    * Add feature for two players
+    * Add feature for sound on click and when automated sequence runs
+    * Add player name at start.  Use player name to store score
+    * Add hover feature to control bars at the bottom of game page
+    * Modify code to support different screen sizes
     * Clean up code to elimiate redundant logic comparisons
         *Array comparison logic 
 
 
 ## SCREEN SHOTS AND LINKS
 
+* Napkin Sketch of Starting Ideas
+
+![Napkin Sketch](https://user-images.githubusercontent.com/74615798/104466882-51676100-557b-11eb-896c-a671752e9698.png)
+
 * Screen Shot of Game
 
 ![image of game](https://user-images.githubusercontent.com/74615798/104464104-2fb8aa80-5578-11eb-8bfb-a1df3ddc5411.png)
 
+* Link to Game Site
 
+![Simon Says Game Link}(https://ackottsi.github.io/)
 
 
 
