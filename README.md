@@ -35,13 +35,13 @@ No Installation Instructions
     * Created way for user to input moves and stored them to an array
     * Logic conditions to end game once the player has an incorrect entry
     * Game over message displays with points total
+    * Added blinking feature to "GAME OVER" when incorrect move is entered
 
 
 * FUTURE DESIRED FEATURES
-    * add a reset button to start the game over
     * speed up sequence timing as the rounds incease
     * add feature for two players
-    * add feature for sound on click
+    * add feature for sound on click and when automated sequence runs
     * add player name at start.  Use player name to store score
     * add hover feature to control bars at the bottom of game page
     * modify code to support different screen sizes

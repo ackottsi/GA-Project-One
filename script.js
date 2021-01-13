@@ -25,6 +25,10 @@ let transitionSpeed=400;
 //delay beteween new rounds
 let delayBetweeenRounds=1000;
 
+//
+let round=document.querySelector("#ROUND");
+let score=document.querySelector("#SCORE");
+let gameOverBlink=null;
 
 
 /*
@@ -37,7 +41,7 @@ activateGameBoard();
 
 //GENERATE INITIAL SEQUENCE AND SHOW SEQUENCE TO START GAME:
 generateNewSequence(roundCount);
-showSequence(automatedArray);
+
 
 //EVENT LISTENER FOR RESET BUTTON
 const rst=document.querySelector("#rst");
@@ -170,8 +174,8 @@ GENERATE SEQUENCE BUTTON IS CLICKED
     generator.addEventListener("click",function(){
         console.log("roundCount"+roundCount); 
         setTimeout(showSequence,500,automatedArray);
-        document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
-        document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
+        round.textContent=`ROUND ${roundCount}`;
+        score.textContent=`SCORE: ${playerOnePoints}`;
         playerChoice.length=0;
     })
 
@@ -190,10 +194,18 @@ function compareUniqueArrPostion(Arr1,testArr){
 
         if (Arr1[i].toString()!==testArr[i].toString()){
             // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
-            document.querySelector("#ROUND").style.fontSize="50px";
-            document.querySelector("#SCORE").style.fontSize="50px";
-            document.querySelector("#ROUND").textContent="GAME OVER!";
-            document.querySelector("#SCORE").textContent=`FINAL SCORE:${playerOnePoints} POINTS`;
+            round.style.fontSize="50px";
+            score.style.fontSize="50px";
+            round.textContent="GAME OVER!";
+            round.style.color="orange";
+
+            //blinking code for "GAME OVER" message.  w3docs used as reference. 
+            //link:  https://www.w3docs.com/learn-html/html-blink-tag.html
+            gameOverBlink=setInterval(function(){
+                    round.style.opacity=(round.style.opacity==0?1:0);
+            }, 500);
+            
+            score.textContent=`FINAL SCORE:${playerOnePoints} POINTS`;
 
             //WOULD LIKE TO ADD A FEATURE HERE TO TURN OFF EVENT LISTENERS TO PREVENT 
             //ADDITIONAL MOVES
@@ -247,8 +259,8 @@ function compareResults(){
                 setTimeout(function(){showSequence(automatedArray);},delayBetweeenRounds);
 
                 //update round and score on HTML page
-                document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
-                document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
+                round.textContent=`ROUND ${roundCount}`;
+                score.textContent=`SCORE: ${playerOnePoints}`;
         }
     }
 
@@ -268,11 +280,13 @@ function resetGame(){
     playerChoice.length=0;
     automatedArray.length=0;
 
-
-    document.querySelector("#ROUND").style.fontSize="1.5em";
-    document.querySelector("#SCORE").style.fontSize="1.5em";    
-    document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
-    document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
+    round.style.opacity=1;
+    clearInterval(gameOverBlink);
+    round.style.fontSize="1.5em";
+    score.style.fontSize="1.5em";
+    round.style.color="#55c379b0";    
+    round.textContent=`ROUND ${roundCount}`;
+    score.textContent=`SCORE: ${playerOnePoints}`;
     generateNewSequence(roundCount);
     setTimeout(showSequence,500,automatedArray);
 
