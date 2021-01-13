@@ -38,13 +38,15 @@ No Installation Instructions
     * Added blinking feature to "GAME OVER" when incorrect move is entered
 
 
-* FUTURE DESIRED FEATURES
+* FUTURE DESIRED FEATURES and CLEAN UP
     * speed up sequence timing as the rounds incease
     * add feature for two players
     * add feature for sound on click and when automated sequence runs
     * add player name at start.  Use player name to store score
     * add hover feature to control bars at the bottom of game page
     * modify code to support different screen sizes
+    * Clean up code to elimiate redundant logic comparisons
+        *Array comparison logic 
 
 
 

@@ -25,10 +25,14 @@ let transitionSpeed=400;
 //delay beteween new rounds
 let delayBetweeenRounds=1000;
 
-//
+//variables for scoreboard
 let round=document.querySelector("#ROUND");
 let score=document.querySelector("#SCORE");
 let gameOverBlink=null;
+
+//variable for removing listeners to game board
+const freezeButton=[];
+
 
 
 /*
@@ -49,12 +53,18 @@ rst.addEventListener("click",resetGame);
 
 
 
-//function for creating event listenters on each game board button
+
+/*
+Function for creating event listenters on each game board button.  This code block
+also represents the logic that takes place each time a player enters a move.  On a click,
+the box will "flash", then the logic that follows is executed.
+*/
+
 function activateGameBoard(){
     for (let i=0; i<gameButtons.length; i++){
         // console.log(gameButtons[i]);
-            gameButtons[i].addEventListener("click",function(e){
-                e.preventDefault();
+            gameButtons[i].addEventListener("click",function(){
+                // e.preventDefault();
                 // console.log(gameButtons[i]);
                 // console.log("color clicked is "+gameButtons[i].id)
                 flashButton(gameButtons[i]);
@@ -176,6 +186,8 @@ GENERATE SEQUENCE BUTTON IS CLICKED
         setTimeout(showSequence,500,automatedArray);
         round.textContent=`ROUND ${roundCount}`;
         score.textContent=`SCORE: ${playerOnePoints}`;
+        round.style.fontSize="2em";
+        score.style.fontSize="2em";
         playerChoice.length=0;
     })
 
@@ -207,13 +219,17 @@ function compareUniqueArrPostion(Arr1,testArr){
             
             score.textContent=`FINAL SCORE:${playerOnePoints} POINTS`;
 
-            //WOULD LIKE TO ADD A FEATURE HERE TO TURN OFF EVENT LISTENERS TO PREVENT 
-            //ADDITIONAL MOVES
-            // let freezeButton=[];
+            /*WOULD LIKE TO ADD A FEATURE HERE TO TURN OFF EVENT LISTENERS TO PREVENT 
+            ADDITIONAL MOVES.  THE CODE BELOW WILL REMOVE THE LISTENERS FROM THE COLOR BUTTONS.
+            THERE SEEMS TO BE SOME ADDTITIONAL EFFORT NEEDED TO RE-ACTIVATE THE LISTENERS*/
+
             // for(let i=0; i<gameButtons.length; i++){
             // freezeButton[i]=gameButtons[i].cloneNode(true);
-            // gameButtons[i].parentNode.removeChild(freezeButton[i],gameButtons[i])     
+            // gameButtons[i].parentNode.replaceChild(freezeButton[i],gameButtons[i]);
+            // gameButtons[i]=freezeButton[i];    
             // }
+
+            
         }
 
     }
@@ -282,14 +298,14 @@ function resetGame(){
 
     round.style.opacity=1;
     clearInterval(gameOverBlink);
-    round.style.fontSize="1.5em";
-    score.style.fontSize="1.5em";
+    round.style.fontSize="2em";
+    score.style.fontSize="2em";
     round.style.color="#55c379b0";    
     round.textContent=`ROUND ${roundCount}`;
     score.textContent=`SCORE: ${playerOnePoints}`;
     generateNewSequence(roundCount);
     setTimeout(showSequence,500,automatedArray);
-
+    
 }
 
 
