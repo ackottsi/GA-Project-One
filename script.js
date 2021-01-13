@@ -25,7 +25,7 @@ let transitionSpeed=400;
 //delay beteween new rounds
 let delayBetweeenRounds=1000;
 
-//variables for scoreboard
+//variables for scoreboard objects
 let round=document.querySelector("#ROUND");
 let score=document.querySelector("#SCORE");
 let gameOverBlink=null;

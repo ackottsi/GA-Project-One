@@ -47,7 +47,7 @@ No Installation Instructions
     * Add hover feature to control bars at the bottom of game page
     * Modify code to support different screen sizes
     * Clean up code to elimiate redundant logic comparisons
-        *Array comparison logic 
+        * Array comparison logic 
 
 
 ## SCREEN SHOTS AND LINKS
