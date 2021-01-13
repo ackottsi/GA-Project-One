@@ -27,53 +27,67 @@ let delayBetweeenRounds=1000;
 
 
 
-/*CODE BELOW ALLOWS USER TO ENTER MOVES FOR THE GAME.
-THE MOVES ARE STORED IN THE "playerChoice" ARRAY.  WHEN THE LENGTH
-OF THE "playerChoice" ARRAY IS EQUAL TO THE AUTOMATED SEQUENCE LENGTH,
-THE compareResults FUNCTION IS INVOKED.*/
-
+/*
+first block of code to initialize game by calling the relevant
+functions
+*/
 const playerChoice=[];
 const gameButtons=document.querySelectorAll(".button");
 activateGameBoard();
+
+//GENERATE INITIAL SEQUENCE AND SHOW SEQUENCE TO START GAME:
+generateNewSequence(roundCount);
+showSequence(automatedArray);
+
+//EVENT LISTENER FOR RESET BUTTON
+const rst=document.querySelector("#rst");
+rst.addEventListener("click",resetGame);
+
 
 
 //function for creating event listenters on each game board button
 function activateGameBoard(){
     for (let i=0; i<gameButtons.length; i++){
-    // console.log(gameButtons[i]);
-    gameButtons[i].addEventListener("click",function(e){
-        e.preventDefault();
         // console.log(gameButtons[i]);
-        // console.log("color clicked is "+gameButtons[i].id)
-        flashButton(gameButtons[i]);
-    
+            gameButtons[i].addEventListener("click",function(e){
+                e.preventDefault();
+                // console.log(gameButtons[i]);
+                // console.log("color clicked is "+gameButtons[i].id)
+                flashButton(gameButtons[i]);
+        
 
-        //below code will allow player to enter choices until the number
-        //of choices is equal to the number of choices in the automated array
-        if(playerOne===true && clickCounter<automatedArray.length){
-        playerChoice.push(gameButtons[i].id);
-        clickCounter++;
-        compareUniqueArrPostion(playerChoice,automatedArray);
-        // console.log("players choice array: "+playerChoice);
-        }
-//if the number of player moves is equal to the length of the automated array,  
-//call the compareResults function
-if(playerChoice.length==automatedArray.length)
-compareResults();   
+            //below code will allow player to enter choices until the number
+            //of choices is equal to the number of choices in the automated array
+            if(playerOne===true && clickCounter<automatedArray.length){
+                playerChoice.push(gameButtons[i].id);
+                clickCounter++;
+                compareUniqueArrPostion(playerChoice,automatedArray);
+            // console.log("players choice array: "+playerChoice);
+            }
+            //if the number of player moves is equal to the length of the automated array,  
+            //call the compareResults function
+            if(playerChoice.length==automatedArray.length)
+                compareResults();  
+
         })
     }
 }
 
-/*FUNCTION BELOW IS USED FOR FLASHING COLOR OF BUTTON
+
+
+/*
+FUNCTION BELOW IS USED FOR FLASHING COLOR OF BUTTON
 BOX WHEN IT IS CLICKED BY THE PLAYER
 */
 function flashButton(button){
-button.style.backgroundColor=button.id;
- const timer=setTimeout(function(){
- button.style.backgroundColor="black";    
- console.log("timer ")},flashSpeed);
+    button.style.backgroundColor=button.id;
+    const timer=setTimeout(function(){
+    button.style.backgroundColor="black";    
+    console.log("timer ")},flashSpeed);
 }
  
+
+
 /*
 RANDOM SEQUENCE GENERATOR FUNCTION
 Random array generator for automated color sequences
@@ -82,22 +96,25 @@ https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javasc
 */
 
 function generateNewSequence(arrLength){
-console.log("this is the array length being passed into generate new sequence "+arrLength);
-const colorChoice=["red","orange","lime","yellow"];
+    console.log("this is the array length being passed into generate new sequence "+arrLength);
+    const colorChoice=["red","orange","lime","yellow"];
 
-for(let i=0; i<arrLength; i++){
-    // console.log("iterator of loop that pushes colors to automated sequence: "+i);
-const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
-console.log("random color "+colorChoice[randomColorIndex]);
-automatedArray.push(colorChoice[randomColorIndex]);
-}
+    for(let i=0; i<arrLength; i++){
+        // console.log("iterator of loop that pushes colors to automated sequence: "+i);
+        const randomColorIndex=Math.floor(Math.random()*colorChoice.length);
+        // console.log("random color "+colorChoice[randomColorIndex]);
+        automatedArray.push(colorChoice[randomColorIndex]);
+    }
+        // console.log("result of newly created sequence "+automatedArray);
+        playerChoice.length=0;
+        clickCounter=0;
+}   
 
-console.log("result of newly created sequence "+automatedArray);
-playerChoice.length=0;
-clickCounter=0;
-}
- 
-/*CODE BELOW IS FOR SHOWING SEQUENCE ON THE GAME BOARD.  
+
+
+
+
+/*CODE BELOW IS FOR SHOWING AUTOMATED SEQUENCE ON THE GAME BOARD.  
 SEQUENCING DELAY OF AUTOMATED SEQUENCES IS INCLUDED BY USING 
 SET TIMEOUT METHOD*/
 
@@ -105,49 +122,50 @@ function showSequence(arrSequence){
     for (let i=0; i<arrSequence.length; i++){
         setTimeout(function(){console.log("delay test iteration "+i)
         
-        console.log(arrSequence);
+            console.log(arrSequence);
+            
+            //if automated sequence value is red, flash red
+            if(arrSequence[i].toString()=="red"){
+                gameButtons[0].style.backgroundColor="red";
+                const timer2=setTimeout(function(){
+                    gameButtons[0].style.backgroundColor="black";    
+                        console.log("timer2 ")},flashSpeed);
+            }
+            //if automated sequence value is orange, flash orange
+            else if(arrSequence[i].toString()=="orange"){
+                gameButtons[1].style.backgroundColor="orange";
+                const timer2=setTimeout(function(){
+                    gameButtons[1].style.backgroundColor="black";    
+                        console.log("timer2 ")},flashSpeed);
+            }   
+
+            //if automated sequence value is lime, flash lime
+            else if(arrSequence[i].toString()=="lime"){
+                gameButtons[2].style.backgroundColor="lime";
+                const timer2=setTimeout(function(){
+                    gameButtons[2].style.backgroundColor="black";    
+                        console.log("timer2 ")},flashSpeed);
+            }
+
+            //if automated sequence value is yellow, flash yellow
+            else if(arrSequence[i].toString()=="yellow"){
+                gameButtons[3].style.backgroundColor="yellow";
+                const timer2=setTimeout(function(){
+                    gameButtons[3].style.backgroundColor="black";    
+                        console.log("timer2 ")},flashSpeed);
+            }  
         
-        //if automated sequence value is red, flash red
-        if(arrSequence[i].toString()=="red"){
-            gameButtons[0].style.backgroundColor="red";
-            const timer2=setTimeout(function(){
-                gameButtons[0].style.backgroundColor="black";    
-                    console.log("timer2 ")},flashSpeed);
-        }
-        //if automated sequence value is orange, flash orange
-        else if(arrSequence[i].toString()=="orange"){
-            gameButtons[1].style.backgroundColor="orange";
-            const timer2=setTimeout(function(){
-                gameButtons[1].style.backgroundColor="black";    
-                    console.log("timer2 ")},flashSpeed);
-        }   
+            //CONTROLS TIMING OF AUTOMATED SEQUENCE TRANSITION       
+        },transitionSpeed*i);
 
-        //if automated sequence value is lime, flash lime
-        else if(arrSequence[i].toString()=="lime"){
-            gameButtons[2].style.backgroundColor="lime";
-            const timer2=setTimeout(function(){
-                gameButtons[2].style.backgroundColor="black";    
-                    console.log("timer2 ")},flashSpeed);
-        }
-
-        //if automated sequence value is yellow, flash yellow
-        else if(arrSequence[i].toString()=="yellow"){
-            gameButtons[3].style.backgroundColor="yellow";
-            const timer2=setTimeout(function(){
-                gameButtons[3].style.backgroundColor="black";    
-                    console.log("timer2 ")},flashSpeed);
-        }  
-        
-    //CONTROLS TIMING OF AUTOMATED SEQUENCE TRANSITION       
-    },transitionSpeed*i);
-
-}
+    }
 }
 
 
-/*CODE BELOW INVOKES showSequence FUNCTION WHEN THE 
-GENERATE SEQUENCE BUTTON IS CLICKED*/
-
+/*
+CODE BELOW INVOKES showSequence FUNCTION WHEN THE 
+GENERATE SEQUENCE BUTTON IS CLICKED
+*/
     const generator=document.querySelector("#sequence_button");
     generator.addEventListener("click",function(){
         console.log("roundCount"+roundCount); 
@@ -157,15 +175,16 @@ GENERATE SEQUENCE BUTTON IS CLICKED*/
 
 
 
-
-/*BELOW FUNCTION COMPARES EACH MOVE OF THE PLAYERS CHOICE ARRAY
+/*
+BELOW FUNCTION COMPARES EACH MOVE OF THE PLAYERS CHOICE ARRAY
 TO THE CORRESPONDING INDEX OF THE AUTOMATED ARRAY.  IF THE PLAYER ENTERS 
-AN INCORRECT MOVE, THE GAME ENDS. */
+AN INCORRECT MOVE, THE GAME ENDS. 
+*/
 
-    function compareUniqueArrPostion(Arr1,testArr){
-        for (let i=0; i<Arr1.length; i++){
-            // console.log("Arr1 " +Arr1);
-            // console.log("testArr "+testArr);
+function compareUniqueArrPostion(Arr1,testArr){
+    for (let i=0; i<Arr1.length; i++){
+        // console.log("Arr1 " +Arr1);
+        // console.log("testArr "+testArr);
 
         if (Arr1[i].toString()!==testArr[i].toString()){
             // console.log("user choice "+i+"DOES NOT equal automated choice "+i);
@@ -181,68 +200,61 @@ AN INCORRECT MOVE, THE GAME ENDS. */
             // freezeButton[i]=gameButtons[i].cloneNode(true);
             // gameButtons[i].parentNode.removeChild(freezeButton[i],gameButtons[i])     
             // }
-            }
- 
         }
+
     }
+}
 
 
  //COMPARE RESULTS FUNCTION   
 /*Compare results function compares full length of playerChoice array
 against full length of automatedArray.  
 */
+
 function compareResults(){
     console.log("automated sequence: "+automatedArray);
     console.log("player choice Arr "+playerChoice);
- const a=automatedArray.toString();
- const b=playerChoice.toString();   
- console.log("automated test array compare results function"+a);
- console.log("players choice Arr compare results function"+b);
+        const a=automatedArray.toString();
+        const b=playerChoice.toString();   
+            console.log("automated test array compare results function"+a);
+            console.log("players choice Arr compare results function"+b);
 
- //if Player successfully followed sequence
- //sequence array is equal to array entered by player
-if(a==b){
-    console.log("the arrays matches")
+            //if Player successfully followed sequence
+            //sequence array is equal to array entered by player
+            if(a==b){
+                 console.log("the arrays matches")
 
-    /*
-    resets player move counter and empty user array.  iterate round counter and add point to player total.
-    */
-    clickCounter=0;
-    playerChoice.length=0;
-    playerOnePoints++;  
-    roundCount++;
+                /*
+                resets player move counter and empty user array.  iterate round counter and add point to player total.
+                */
+                clickCounter=0;
+                playerChoice.length=0;
+                playerOnePoints++;  
+                roundCount++;
 
-    // console.log("points "+playerOnePoints);
-    // console.log("testing console logging");
+                // console.log("points "+playerOnePoints);
+                // console.log("testing console logging");
 
-    /*
-    call generateNewSequence function to add another move to 
-    //automated array.
-    */
-    generateNewSequence(1);
-    
-    //set timeout creates delay between sequence showing for next round
-    setTimeout(function(){showSequence(automatedArray);},delayBetweeenRounds);
+                /*
+                call generateNewSequence function to add another move to 
+                //automated array.
+                */
+                generateNewSequence(1);
+                
+                //set timeout creates delay between sequence showing for next round
+                setTimeout(function(){showSequence(automatedArray);},delayBetweeenRounds);
 
-    //update round and score on HTML page
-    document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
-    document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
+                //update round and score on HTML page
+                document.querySelector("#ROUND").textContent=`ROUND ${roundCount}`;
+                document.querySelector("#SCORE").textContent=`SCORE: ${playerOnePoints}`;
         }
     }
-//if player 
-// else{
-//     console.log("the arrays do not match");
 
-//     clickCounter=0;
-//     playerChoice.length=0;
-//     playerOnePoints==playerOnePoints;
-//     console.log(playerOnePoints);
 
-//     //Need to add action to take when array does not match
-// }
 
 
 /*FUNCTION NEEDED TO RESET GAME WITHOUT BROWSER RESET*/
+
 function resetGame(){
 
     //reset tracking variables to original state
@@ -263,24 +275,6 @@ function resetGame(){
     showSequence(automatedArray);
 
 }
-
-
-//EVENT LISTENER FOR RESET BUTTON
-const rst=document.querySelector("#rst");
-rst.addEventListener("click",resetGame);
-
-
-
-
-//GENERATE INITIAL SEQUENCE AND SHOW SEQUENCE TO START GAME:
-
-generateNewSequence(roundCount);
-showSequence(automatedArray);
-
-
-
-
-
 
 
 
